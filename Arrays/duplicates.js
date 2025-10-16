@@ -36,12 +36,7 @@ Output: true
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function (nums) {
-// 1.using SETS 
-    return new Set(nums).size !== nums.length
-// 2. using hasmap if we found element in hashmap we return true
-// 3
-};
+var containsDuplicate = function (nums) {};
 
-const result=containsDuplicate([1,1,1,3,3,4,3,2,4,2]);
+const result = containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]);
 console.log(result);

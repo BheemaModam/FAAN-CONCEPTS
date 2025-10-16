@@ -28,32 +28,22 @@ Constraints:
     0 <= start <= end <= 105
 
 
-*/ 
+*/
 /**
  * @param {number[][]} intervals
  * @param {number[]} newInterval
  * @return {number[][]}
  */
-var insert = function(intervals, newInterval) {
-    const mergedIntervals=(intervalArray)=>{
-        intervalArray.sort((a,b)=>a[0]-b[0])
-        console.log(intervalArray);
-        const resultArray=[intervalArray[0]];
-        for(let i=0;i<intervalArray.length;i++){
-            const lastMergedInterval=resultArray[resultArray.length-1 ]
-            const currentInterval=intervalArray[i]
-            if(lastMergedInterval[1]<currentInterval[0]){
-                resultArray.push(currentInterval)
-            }else{
-                lastMergedInterval[1]=Math.max(lastMergedInterval[1],currentInterval[1])
-            }
-        }
+var insert = function (intervals, newInterval) {};
 
-        return resultArray
-    }
-    intervals.push(newInterval)
-    return mergedIntervals(intervals)
-};
-
-const res=insert([[1,2],[3,5],[6,7],[8,10],[12,16]],[4,8])
-console.log('Result->',res);
+const res = insert(
+  [
+    [1, 2],
+    [3, 5],
+    [6, 7],
+    [8, 10],
+    [12, 16],
+  ],
+  [4, 8]
+);
+console.log("Result->", res);

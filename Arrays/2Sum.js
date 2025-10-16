@@ -29,30 +29,7 @@ Output: [0,1]
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
-    // 1.Hashmaps not working????
-    // let hash = new Map();
-    // for (let i = 0; i < nums.length; i++) {
-        
-    //     if (!hash.get(target - nums[i])) {
-    //         hash.set(target - nums[i], i);
-            
-    //     }else{
-    //         return [i, hash.get(target - nums[i])];            
-    //     }
-    // }
-    // return []
+var twoSum = function (nums, target) {};
 
-    // 2. using OBJECTS--->working fine.
-    let findPair={};
-    for(let i=0;i<nums.length;i++){
-        if(target-nums[i] in findPair){
-            return [i,findPair[target-nums[i]]]
-        }else{
-            findPair[nums[i]]=i
-        }
-    }
-};
-
-const result = twoSum([2,7,11,15], 9);
+const result = twoSum([2, 7, 11, 15], 9);
 console.log(result);

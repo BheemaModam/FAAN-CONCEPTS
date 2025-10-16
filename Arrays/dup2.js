@@ -14,23 +14,12 @@ Example 3:
 
 Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
-*/ 
+*/
 /**
  * @param {number[]} nums
  * @param {number} k
  * @return {boolean}
  */
-var containsNearbyDuplicate = function(nums, k) {
-    let hash=new Set();
-    for(let i=0;i<nums.length;i++){
-        if(hash.has(nums[i])) return true;
-        hash.add(nums[i]);
-        // size overflow
-        if(hash.size>k){
-            hash.delete(nums[i-k])
-        }
-    }
-    return false    
-};
-const result = containsNearbyDuplicate([1,2,3,1], 3);
+var containsNearbyDuplicate = function (nums, k) {};
+const result = containsNearbyDuplicate([1, 2, 3, 1], 3);
 console.log(result);
