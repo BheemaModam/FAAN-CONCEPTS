@@ -36,10 +36,25 @@ where n is the array's size.
  * @param {number} k
  * @return {number[]}
  */
-var topKFrequent = function (nums, k) {};
+var topKFrequent = function (nums, k) {
+  // 1.create Hashmap with all nums
+  let hash = new Map();
+  for (let i = 0; i <= nums.length; i++) {
+    hash.set(nums[i], (hash.get(nums[i]) || 0) + 1);
+  }
+  // 2.create MinHeap using Arrays
+  const queue = [...hash.entries()].sort((a, b) => b[1] - a[1]);
+  let result = [];
+  for (let i = 0; i < k; i++) {
+    result.push(queue[i][0]);
+  }
+  return result;
+};
 
 const res1 = topKFrequent([1, 1, 1, 2, 2, 3], 2);
 console.log(res1);
 
-const res2 = topKFrequent([1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 2);
+const res2 = topKFrequent([1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 1);
 console.log(res2);
+const res3 = topKFrequent([1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 2);
+console.log(res3);
