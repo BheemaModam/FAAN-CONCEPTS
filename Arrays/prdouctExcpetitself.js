@@ -26,34 +26,12 @@ Constraints:
 
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
 
-*/ 
+*/
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
-var productExceptSelf = function(nums) {
-   let leftElement=1;
-   let rightElement=1;
-   let result=[];
+var productExceptSelf = function (nums) {};
 
-//    LEFT PRODUCT
-   for(let i=0;i<nums.length;i++){
-   
-    result[i]=leftElement;
-    leftElement*=nums[i]
-
-   }
-   
-   for(let i=nums.length-1;i>=0;i--){
-    result[i]*=rightElement;
-    rightElement*=nums[i]
-    console.log('Right-left',rightElement,i);
-    
-   }
-   
-   return result
-    
-};
-
-const res=productExceptSelf([1,2,3,4])
-console.log('Resutl->',res);
+const res = productExceptSelf([1, 2, 3, 4]);
+console.log("Resutl->", res);

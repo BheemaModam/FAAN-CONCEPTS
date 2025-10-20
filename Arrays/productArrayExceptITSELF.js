@@ -29,23 +29,7 @@ The input is generated such that answer[i] is guaranteed to fit in a 32-bit inte
  * @param {number[]} nums
  * @return {number[]}
  */
-var productExceptSelf = function (nums) {
-  //todo: PRE FIX AND POST FIX APPROACH
-  let prefix = 1;
-  let postfix = 1;
-  let result = new Array(nums.length).fill(1);
-  // CALUCULATE PREFIX
-  for (let i = 0; i < nums.length; i++) {
-    result[i] = prefix;
-    prefix = prefix * nums[i];
-  }
-  // CALUCULATE PostFIX
-  for (let i = nums.length - 1; i >= 0; i--) {
-    result[i] = result[i] * postfix;
-    postfix = postfix * nums[i];
-  }
-  return result;
-};
+var productExceptSelf = function (nums) {};
 
 const res1 = productExceptSelf([1, 2, 3, 4]);
 console.log(res1);
