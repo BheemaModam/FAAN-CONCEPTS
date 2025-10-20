@@ -96,7 +96,20 @@ var scoreBalance = function (s) {
  * @return {boolean}
  */
 var scoreBalance = function (s) {
+  let total = 0;
 
+  for (let i = 0; i < s.length; i++) {
+    total += s.charCodeAt(i) - 96;
+  }
+
+  let leftSum = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    leftSum += s.charCodeAt(i) - 96;
+    if (leftSum === total - leftSum) return true;
+  }
+
+  return false;
 };
 const res1 = scoreBalance("rps");
 console.log(`Result->${res1}`);
