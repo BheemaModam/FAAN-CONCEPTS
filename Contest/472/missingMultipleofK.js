@@ -31,7 +31,15 @@ Constraints:
  * @return {number}
  */
 var missingMultiple = function (nums, k) {
-  
+  let resultArr = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % k === 0) {
+      resultArr.push(nums[i]);
+    }
+  }
+  console.log(`Resutl=>,${resultArr}`);
+  const sortedArray = resultArr.sort((a, b) => a - b);
+  console.log(`sortedArray=>,${sortedArray}`);
 };
 
 const res1 = missingMultiple([8, 2, 3, 4, 6], 2);
