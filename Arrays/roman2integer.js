@@ -50,36 +50,3 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 */
-/**
- * @param {string} s
- * @return {number}
- */
-var romanToInt = function (s) {
-  const guide = new Map([
-    ["I", 1],
-    ["V", 5],
-    ["X", 10],
-    ["L", 50],
-    ["C", 100],
-    ["D", 500],
-    ["M", 1000],
-  ]);
-  let preValue = guide.get(s[0]);
-  let sum = 0;
-  for (let i = 1; i < s.length; i++) {
-    const curValue = guide.get(s[i]);
-    if (preValue > curValue) {
-      sum -= preValue;
-    } else {
-      sum += preValue;
-    }
-    preValue = curValue;
-  }
-  sum += preValue;
-  return sum;
-};
-
-const res3 = romanToInt("III");
-const res2 = romanToInt("LVIII");
-const res1 = romanToInt("MCMXCIV");
-console.log(`Result->${(res1, res2, res3)}`);
