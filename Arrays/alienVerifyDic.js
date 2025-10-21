@@ -43,7 +43,40 @@ All characters in words[i] and order are English lowercase letters.
  * @param {string} order
  * @return {boolean}
  */
-var isAlienSorted = function (words, order) {};
+var isAlienSorted = function (words, order) {
+  // 1.create a hashmap for order with nums as priority
+  let hashMap = new Map();
+  for (let i = 0; i < order.length; i++) {
+    hashMap.set(order[i], i);
+  }
+
+  // 2.compare words
+  for (let i = 0; i < words.length - 1; i++) {
+    // 3.select word individuelly
+    for (let j = 0; j < words[i].length; j++) {
+      console.log(`letter->${words[i][j]}`);
+      if (j >= words[i + 1].length) {
+        return false;
+      }
+      //   compare letter by letter
+      if (words[i].charCodeAt(j) !== words[i + 1].charCodeAt(j)) {
+        const curr = hashMap.get(words[i][j]);
+        const next = hashMap.get(words[i + 1][j]);
+        if (next < curr) {
+          return false;
+        } else {
+          break;
+        }
+      }
+    }
+  }
+  return true;
+};
 
 const res1 = isAlienSorted(["hello", "leetcode"], "hlabcdefgijkmnopqrstuvwxyz");
 console.log(`Res->${res1}`);
+const res2 = isAlienSorted(
+  ["word", "world", "row"],
+  "worldabcefghijkmnpqstuvxyz"
+);
+console.log(`Res->${res2}`);
