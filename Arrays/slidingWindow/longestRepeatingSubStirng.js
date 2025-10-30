@@ -29,7 +29,28 @@ s consists of only uppercase English letters.
  * @param {number} k
  * @return {number}
  */
-var characterReplacement = function (s, k) {};
+var characterReplacement = function (s, k) {
+  const getIndexofChar = (s) => s.charCodeAt(0) - "A".charCodeAt(0);
+  let leftPointer = 0;
+  let rightPointer = 0;
+  let charArr = new Array(26).fill(0);
+  let maxFreq = 0;
+  for (rightPointer; rightPointer < s.length; rightPointer++) {
+    // 1.calucuate MaxFreq
+    const currChar = getIndexofChar(s[rightPointer]);
+    charArr[currChar]++;
+
+    maxFreq = Math.max(maxFreq, charArr[currChar]);
+    // 2.check windowSize and remvoe leftchar
+    if (rightPointer - leftPointer + 1 - maxFreq > k) {
+      const leftChar = getIndexofChar(s[leftPointer]);
+      charArr[leftChar]--;
+      leftPointer++;
+    }
+  }
+
+  return s.length - leftPointer;
+};
 
 const res1 = characterReplacement("ABAB", 2);
 const res2 = characterReplacement("AABABBA", 1);
