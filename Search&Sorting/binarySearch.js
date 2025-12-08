@@ -4,7 +4,8 @@ Easy
 Topics
 premium lock icon
 Companies
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+Given an array of integers nums which is sorted in ascending order, and an integer target, 
+write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 You must write an algorithm with O(log n) runtime complexity.
 
@@ -35,5 +36,20 @@ nums is sorted in ascending order.
  * @return {number}
  */
 var search = function(nums, target) {
-    
+    let leftPointer=0;
+    let rightPointer=nums.length-1;
+    while(leftPointer<rightPointer){
+        let midPointer=leftPointer+Math.floor((rightPointer-leftPointer)/2);
+        if(nums[midPointer]>target){
+            rightPointer=midPointer-1;
+        }else if(nums[midPointer]<target){
+            leftPointer=midPointer+1
+        }else {
+            return midPointer
+        }
+    }
+    return -1;
 };
+const res1=search([-1,0,3,5,9,12],  9)
+const res2=search([-1,0,3,5,9,12], 2)
+console.log(`Result\n res1->${res1}\n res2->${res2}`);
