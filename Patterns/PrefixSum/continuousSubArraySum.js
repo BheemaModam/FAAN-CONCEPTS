@@ -47,6 +47,29 @@ Constraints:
  * @param {number} k
  * @return {boolean}
  */
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
 var checkSubarraySum = function(nums, k) {
+    let sum=0;
+    let remainderMap=new Map();
+    remainderMap.set(0,-1)
+    for(let i=0;i<nums.length;i++){
+        sum+=nums[i];
+        let target=sum%k;
+        if(remainderMap.has(target)){
+            if(i-remainderMap.get(target)>1){
+                return true;
+            }
+            }else{
+                remainderMap.set(target,i)
+            }
+        }
     
+    return false;
 };
+
+const result = checkSubarraySum([23,2,4,6,7],  6);
+console.log(result);
