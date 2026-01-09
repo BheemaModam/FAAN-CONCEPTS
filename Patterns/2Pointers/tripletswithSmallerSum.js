@@ -49,4 +49,4 @@ var countTriplets=function(n,sum,arr){
 const res1 = countTriplets( 4,  2, [-2, 0, 1, 3]);
 const res2 = countTriplets(5, 12, [5, 1, 3, 4, 7]);
 
-console.log(`Result->${res1},${res2}`);
+console.log(`Result->\n${res1}\n,${res2}`);
