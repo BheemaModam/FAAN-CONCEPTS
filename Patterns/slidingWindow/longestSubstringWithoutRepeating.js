@@ -5,7 +5,7 @@ Topics
 premium lock icon
 Companies
 Hint
-Given a string s, find the length of the longest substring without duplicate characters. 
+Given a string s, find the length of the longest substring without duplicate characters.
 
 Example 1:
 Input: s = "abcabcbb"
@@ -22,7 +22,7 @@ Input: s = "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
- 
+
 
 Constraints:
 0 <= s.length <= 5 * 104
@@ -33,25 +33,48 @@ s consists of English letters, digits, symbols and spaces.
  * @param {string} s
  * @return {number}
  */
+// var lengthOfLongestSubstring = function (s) {
+//   let leftPointer = 0;
+//   let rightPointer = 0;
+//   let uniqueString = 0;
+//   let freqCharsMap = new Map();
+//   for (rightPointer; rightPointer < s.length; rightPointer++) {
+//     const curr = s[rightPointer];
+//     freqCharsMap.set(curr, (freqCharsMap.get(curr) || 0) + 1);
+//     // 2.check for duplicates
+//     while (freqCharsMap.get(curr) > 1) {
+//       const leftChar = s[leftPointer];
+//       freqCharsMap.set(leftChar, freqCharsMap.get(leftChar) - 1);
+//       leftPointer++;
+//     }
+//     uniqueString = Math.max(uniqueString, rightPointer - leftPointer + 1);
+//   }
+//   return uniqueString;
+// };
+
+
 var lengthOfLongestSubstring = function (s) {
   let leftPointer = 0;
   let rightPointer = 0;
   let uniqueString = 0;
   let freqCharsMap = new Map();
-  for (rightPointer; rightPointer < s.length; rightPointer++) {
-    const curr = s[rightPointer];
-    freqCharsMap.set(curr, (freqCharsMap.get(curr) || 0) + 1);
-    // 2.check for duplicates
-    while (freqCharsMap.get(curr) > 1) {
-      const leftChar = s[leftPointer];
-      freqCharsMap.set(leftChar, freqCharsMap.get(leftChar) - 1);
+  for(rightPointer;rightPointer<s.length;rightPointer++){
+    let curr=s.charAt(rightPointer)
+    freqCharsMap.set(curr,(freqCharsMap.get(curr)||0)+1);
+    let k=rightPointer-leftPointer+1;
+    while(freqCharsMap.size<k){
+      let leftChar=s.charAt(leftPointer)
+      if(freqCharsMap.get(leftChar)===0){
+        freqCharsMap.delete(leftChar)
+      }
       leftPointer++;
+      k=rightPointer-leftPointer+1;
     }
-    uniqueString = Math.max(uniqueString, rightPointer - leftPointer + 1);
+    uniqueString=Math.max(uniqueString,rightPointer-leftPointer+1)
   }
   return uniqueString;
 };
 // const res1 = lengthOfLongestSubstring("bbbbb");
 const res1 = lengthOfLongestSubstring("eidbaooo");
-const res2 = lengthOfLongestSubstring("pwwkew");
+const res2 = lengthOfLongestSubstring("pwwke");
 console.log(`Result->${res1},${res2}`);

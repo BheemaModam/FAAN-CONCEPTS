@@ -27,42 +27,44 @@ Constraints:
 *
 
 *!my attempt
+*/
 var maxSubArray=function(array,k){
   let result=0;
   let left=0;
-  let sum=array[left];
+  let sum=0;
 
-  for( let right=0;right<array.length-1;right++){
+  for( let right=0;right<array.length;right++){
 
      sum=sum+array[right];
-     result=Math.max(result,sum)
+
     // removing leftChar
      while(right-left+1>k){
       const leftChar=array[left];
       sum=sum-leftChar;
+      result=Math.max(result,sum)
       left++;
      }
   }
   return result;
 }
-*/
-var maxSubArray=function(array,k){
 
-  let windowSum=0;
-  // sum of firstWindow
-  for(let i=0;i<k;i++){
-    windowSum+=array[i]
-  };
-  let maxSum=windowSum;
-  // sliding window 1 by 1
-  for(let i=k;i<array.length;i++){
-    windowSum+=array[i]-array[i-k];
-    maxSum=Math.max(maxSum,windowSum)
-  }
+// var maxSubArray=function(array,k){
+//   let left=0
+//   let windowSum=0;
+//   // sum of firstWindow
+//   for(let i=0;i<k;i++){
+//     windowSum+=array[i]
+//   };
+//   let maxSum=windowSum;
+//   // sliding window 1 by 1
+//   for(let i=k;i<array.length;i++){
+//     windowSum+=array[i]-array[i-k];
+//     maxSum=Math.max(maxSum,windowSum)
+//   }
 
 
-  return maxSum;
-}
+//   return maxSum;
+// }
 const res1 = maxSubArray([100, 200, 300, 400], 2);
 const res2 = maxSubArray([1, 4, 2, 10, 23, 3, 1, 0, 20], 4);
 const res3 = maxSubArray([100, 200, 300, 400], 1);
