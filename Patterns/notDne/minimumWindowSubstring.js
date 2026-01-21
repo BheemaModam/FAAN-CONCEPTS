@@ -76,7 +76,7 @@ var minWindow = function (s, t) {
     }
     while (left <= right && created === uniqueChars) {
       const current = s.charAt(left);
-      if (ans[0] == -1 || ans[0] >= right - left + 1) {
+      if (ans[0] == -1 || ans[0] >= right - left + 1) { 
         ans[0] = right - left + 1;
         ans[1] = left;
         ans[2] = right;

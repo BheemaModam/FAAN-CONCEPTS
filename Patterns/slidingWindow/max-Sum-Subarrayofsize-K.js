@@ -30,7 +30,7 @@ Constraints:
 */
 var maxSubArray=function(array,k){
   let result=0;
-  let left=0;
+  let left=0;f
   let sum=0;
 
   for( let right=0;right<array.length;right++){
