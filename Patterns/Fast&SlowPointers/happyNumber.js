@@ -34,7 +34,29 @@ Constraints:
 /**
  * @param {number} n
  * @return {boolean}
+ FIX: WITHOUT FAST SLOW POINTERS
  */
 var isHappy = function(n) {
-
+ let visited=new Set();
+ while(!visited.has(n)){
+  visited.add(n);
+  n=getNextNumber(n);
+  if(n===1){
+    return true;
+  }
+ }
+ return false;
 };
+var getNextNumber=function(n){
+  let output=0;
+  while(n>0){
+    let digit=n%10;
+    output+=digit*digit;
+    n=Math.floor(n/10);
+  }
+  return output;
+};
+
+const res1=isHappy(19)
+const res2=isHappy(2)
+console.log(`Result->\n res1=${res1}\n res2=${res2}\n\n`)
