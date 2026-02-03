@@ -32,5 +32,22 @@ Constraints:
  * @return {number[]}
  */
 var nextGreaterElements = function(nums) {
+    const n = nums.length;
+    const res = Array(n).fill(-1);
+    const stack = [];
 
+    for (let i = 0; i < 2 * n; i++) {
+        const num = nums[i % n];
+        while (stack.length && nums[stack[stack.length - 1]] < num) {
+            res[stack.pop()] = num;
+        }
+        if (i < n) stack.push(i);
+    }
+
+    return res;
 };
+const res1 = nextGreaterElements( [1,2,1]);
+const res2 = nextGreaterElements([1,2,3,4,3]);
+const res3 = nextGreaterElements( [3,8,4,1,2]);
+
+console.log(`Result->\nres1->${res1},\nres2->${res2},\nres3->${res3}\n`);
