@@ -66,3 +66,8 @@ var maximumSum = function (arr) {
     }
     return result;
 };
+
+const test1=maximumSum( [1,-2,0,3]);
+const test2=maximumSum([1,-2,-2,3]);
+const test3=maximumSum([-1,-1,-1,-1]);
+console.log(`Result ->\n test1->${test1}\n test2->${test2}\n test3->${test3}`)
