@@ -39,5 +39,29 @@ Follow up: Could you do it in one pass?
  * @return {ListNode}
  */
 var reverseBetween = function(head, left, right) {
+    if (!head || left === right) {
+        return head;
+    }
 
+    const dummy = new ListNode(0, head);
+    let prev = dummy;
+
+    for (let i = 0; i < left - 1; i++) {
+        prev = prev.next;
+    }
+
+    let cur = prev.next;
+
+    for (let i = 0; i < right - left; i++) {
+        const temp = cur.next;
+        cur.next = temp.next;
+        temp.next = prev.next;
+        prev.next = temp;
+    }
+
+    return dummy.next;
 };
+const test1=reverseBetween( [1,2,3,4,5], 2, 4);
+const test2=reverseBetween([5], 1, 1);
+
+console.log(`Result ->\n test1->${test1}\n test2->${test2}\n `)
